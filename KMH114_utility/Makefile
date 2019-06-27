@@ -29,6 +29,9 @@
 # * clean_all (will clean all required dirs)
 # * clean (will only clean the bin directory)
 #
+# maxinstall, scinstall, vstinstall etc attempts to install in default positions, the exact
+# location can be specified below under respective argument (see Install directories)
+# 
 # 30 Juni 2018	Henrik Frisk	mail@henrikfrisk.com
 
 ## Specify the sources to build here
@@ -43,8 +46,15 @@ scdir	:= $(bindir)/sc
 maxdir	:= $(bindir)/max
 vstdir	:= $(bindir)/vst
 pddir	:= $(bindir)/pd
+ambixdir:= ambix
+
+## Install directories
 pdinstdir	:= ~/Documents/Pd/externals/ADT
 vstinstdir	:= ~/Library/Audio/Plug-Ins/VST/ADT
+ambixinstdir	:= ~/Library/ambix/binaural_presets
+maxinstall	:= ~/Documents/Max\ 7/Packages
+
+## Variables
 amb108		:= kmh_108
 amb114		:= kmh_114
 ambls		:= kmh_ls
@@ -57,6 +67,7 @@ mxo	:= $(addprefix $(maxdir)/, $(notdir $(src:.dsp=~.mxo)))
 sc	:= $(addprefix $(scdir)/, $(notdir $(src:.dsp=.sc)))
 scx	:= $(addprefix $(scdir)/, $(notdir $(src:.dsp=.scx)))
 superscx:= $(addprefix $(scdir)/, $(notdir $(src:.dsp=_supernova.scx)))
+ambix	:= $(addprefix $(ambixdir)/, $(notdir $(src:.dsp=.config)))
 pd	:= $(addprefix $(pddir)/, $(notdir $(src:.dsp=~.pd_darwin)))
 html	:= $(addprefix $(docdir)/, $(notdir $(src:.dsp=.html)))
 oct	:= $(addprefix $(bindir)/, $(notdir $(src:.dsp=.m)))
@@ -89,7 +100,7 @@ FAUST2OCTV 	:= faust2octave
 FAUST2MDOC	:= f2mdoc
 
 ## Create the relevant directories for compiling and installing.
-REQUIRED_DIRS	= $(bindir) $(docdir) $(cppdir) $(scdir) $(maxdir) $(vstdir) $(pddir) $(pdinstdir) $(vstinstdir)
+REQUIRED_DIRS	= $(bindir) $(docdir) $(cppdir) $(scdir) $(maxdir) $(vstdir) $(pddir) $(pdinstdir) $(vstinstdir) $(ambixinstdir)/$(amb108) $(ambixinstdir)/$(amb114) $(ambixinstdir)/$(ambls)
 MKDIR	       	:= $(shell for d in $(REQUIRED_DIRS); \
 			do				\
 			[[ -d $$d ]] || mkdir -p $$d; 	\
@@ -101,8 +112,9 @@ LOCLS		:= KMHLS
 
 SC_INSTALL	:= ~/Library/Application\ Support/SuperCollider/Extensions/ADT
 VST_INSTALL	:= $(vstinstdir)
-MAX_INSTALL	:= ~/Documents/Max\ 7/Packages
+MAX_INSTALL	:= $(maxinstall)
 PD_INSTALL	:= $(pdinstdir)
+AMBIX_INSTALL	:= $(ambixinstdir)
 MAX_HELP	:= help
 MAX_EXTERNALS	:= externals
 MAX_JSUI	:= jsui
@@ -121,7 +133,7 @@ SSCX		:= $(addprefix $(SC_INSTALL)/, $(notdir $(src:.dsp=_supernova.scx)))
 
 all : $(app) $(jack) $(vst) $(html) $(mxo) $(sc) $(svg) $(pd)
 
-install : scinstall maxinstall pdinstall vstinstall
+install : scinstall maxinstall pdinstall vstinstall ambixinstall
 
 doc : $(html)
 
@@ -164,9 +176,6 @@ $(bindir)/% : $(srcdir)/%.dsp
 $(maxdir)/%~.mxo : $(srcdir)/%.dsp
 	echo $<
 	$(FAUST2MAX) $<
-#	@rm -rf $(maxdir)/*
-#	@rm $(maxdir)/*.mxo
-#	@rm $(maxdir)/ui.js
 	@mv $(srcdir)/$(notdir $@) $@
 	@mv $(notdir $(<:.dsp=.maxpat)) $(maxdir)
 	@mv ui.js $(maxdir)
@@ -206,6 +215,7 @@ $(scdir)/%.sc : $(srcdir)/%.dsp
 .PHONY : maxinstall maxdirs tester maxbin maxjsui maxreadme maxhelp
 
 maxinstall : max maxbin maxjsui maxreadme maxhelp
+	rm $(maxdir)/*.maxpat && rm -rf $(maxdir)/*.mxo && rm $(maxdir)/*.js
 	@echo "Max package installed in $(MAX_INSTALL)"
 	@echo ""
 
@@ -264,12 +274,17 @@ vstinstall : $(vst)
 # $(VST_INSTALL)/%.vst : $(vst)
 # 	@cp -R $< $(dir $@)
 
+ambixinstall :
+	$(if $(ambix), $(if $(wildcard $(srcdir)/$(LOC108)*.dsp), install $(wildcard $(ambixdir)/*.config) $(AMBIX_INSTALL)/$(amb108))) \
+	$(if $(ambix), $(if $(wildcard $(srcdir)/$(LOC114)*.dsp), install $(wildcard $(ambixdir)/*.config) $(AMBIX_INSTALL)/$(amb114))) \
+	$(if $(ambix), $(if $(wildcard $(srcdir)/$(LOCLS)*.dsp), install $(wildcard $(ambixdir)/*.config) $(AMBIX_INSTALL)/$(ambls)))
+
 clean_all :
 	@rm  -rf $(REQUIRED_DIRS)
 
 clean :
 	@rm -rf $(bindir)/*
 
-.PHONY: all test clean doc runapp viewsvg oct octview sc max binclean mdoc scinstall pdinstall vstinstall install
+.PHONY: all test clean doc runapp viewsvg oct octview sc max binclean mdoc scinstall pdinstall vstinstall install ambixinstall
 
 .SUFFIXES: .app .dsp .html .md
