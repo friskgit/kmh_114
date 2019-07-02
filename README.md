@@ -2,7 +2,7 @@
 
 # General information
 
-Scroll down to [Studio 114](#orgde89384) for specifics.
+Scroll down to [Studio 114](#org0a37f13) for specifics.
 
 
 ## Ambisonics in KMH studios and Lilla salen
@@ -10,7 +10,7 @@ Scroll down to [Studio 114](#orgde89384) for specifics.
 
 ### About the compiled decoders
 
-All decoders use ACN channel order (see [Component order](#org6ed4d6e)) and SN3D normalization (see [Normalisation](#orgd1b64ec)) and are dual-band, max-rE/rV.
+All decoders use ACN channel order (see [Component order](#orgeedb29f)) and SN3D normalization (see [Normalisation](#orgb840f78)) and are dual-band, max-rE/rV.
 
 -   A guide to the file names
 
@@ -187,7 +187,7 @@ All decoders use ACN channel order (see [Component order](#org6ed4d6e)) and SN3D
         `$ make -k target=install all`
 
 
-<a id="orgde89384"></a>
+<a id="org0a37f13"></a>
 
 # Studio 114
 
@@ -330,13 +330,13 @@ L, R, LSR, RSR, LSF, RSF, RL, RR, ULF, URF, URL, URR, VOG
 For studios 108 and 114 there is a small utitlity program that wraps your channels around. For 114, this means that you can insert `KMH114_channel_map` after your decoder and your channels will come out in the right order for a linear routing on the SSL (1 -> 1, 2 -> 2, etc)
 
 
-<a id="orgf10bb7c"></a>
+<a id="org24fb00d"></a>
 
 ### Speaker positions
 
 Speaker index is counted linearly clockwise from FL. Subs are skipped.
 
-<table id="org72e5ab7" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgf41ebb8" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -476,7 +476,7 @@ Speaker index is counted linearly clockwise from FL. Subs are skipped.
 
 -   Center included
 
-    Generate a file `spat_aed.txt` with the current speaker arrangments in Studio 114 according to [Speaker positions](#orgf10bb7c) for use with the Ircam spat package. 
+    A setup file for the current speaker arrangments in Studio 114 according to [Speaker positions](#org24fb00d) for use with the Ircam spat package. 
     
     In Max/MSP (Spat), make an object: `[spat.viewer @numspeakers 15 @showlistener 1 @viewpoint top @width 1200 @height 600]` and send it the following in a message:
     
