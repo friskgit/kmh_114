@@ -1,6 +1,8 @@
+
+
 # General information
 
-Scroll down to [Studio 114](#org6c10218) for specifics.
+Scroll down to [Studio 114](#orgde89384) for specifics.
 
 
 ## Ambisonics in KMH studios and Lilla salen
@@ -8,7 +10,7 @@ Scroll down to [Studio 114](#org6c10218) for specifics.
 
 ### About the compiled decoders
 
-All decoders use ACN channel order (see [Component order](#orge1676cb)) and SN3D normalization (see [Normalisation](#org26e8750)) and are dual-band, max-rE/rV.
+All decoders use ACN channel order (see [Component order](#org6ed4d6e)) and SN3D normalization (see [Normalisation](#orgd1b64ec)) and are dual-band, max-rE/rV.
 
 -   A guide to the file names
 
@@ -82,12 +84,71 @@ All decoders use ACN channel order (see [Component order](#orge1676cb)) and SN3D
 
     The component order for the input to the decoder follows the ACN (Ambisonics Channel Number) standard according to the table below (for third order):
     
-    |   |    |    | 0  |    |    |    |
-    |   |    | 1  | 2  | 3  |    |    |
-    |   | 4  | 5  | 6  | 7  | 8  |    |
-    | 9 | 10 | 11 | 12 | 13 | 13 | 15 |
+    <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
     
-    Or: W Y Z X V T R S U Q O M K L N P
+    
+    <colgroup>
+    <col  class="org-left" />
+    
+    <col  class="org-right" />
+    
+    <col  class="org-right" />
+    
+    <col  class="org-right" />
+    
+    <col  class="org-right" />
+    
+    <col  class="org-right" />
+    
+    <col  class="org-left" />
+    </colgroup>
+    <tbody>
+    <tr>
+    <td class="org-left">&#xa0;</td>
+    <td class="org-right">&#xa0;</td>
+    <td class="org-right">&#xa0;</td>
+    <td class="org-right">0</td>
+    <td class="org-right">&#xa0;</td>
+    <td class="org-right">&#xa0;</td>
+    <td class="org-left">&#xa0;</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">&#xa0;</td>
+    <td class="org-right">&#xa0;</td>
+    <td class="org-right">1</td>
+    <td class="org-right">2</td>
+    <td class="org-right">3</td>
+    <td class="org-right">&#xa0;</td>
+    <td class="org-left">&#xa0;</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">&#xa0;</td>
+    <td class="org-right">4</td>
+    <td class="org-right">5</td>
+    <td class="org-right">6</td>
+    <td class="org-right">7</td>
+    <td class="org-right">8</td>
+    <td class="org-left">&#xa0;</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">9</td>
+    <td class="org-right">10</td>
+    <td class="org-right">11</td>
+    <td class="org-right">12</td>
+    <td class="org-right">13</td>
+    <td class="org-right">13</td>
+    <td class="org-left">15</td>
+    </tr>
+    </tbody>
+    </table>
+    
+    Or: W Y Z X V T R S U Q O M K L N P 
 
 -   Normalisation
 
@@ -95,7 +156,8 @@ All decoders use ACN channel order (see [Component order](#orge1676cb)) and SN3D
 
 -   Compiling the decoders
 
-    This is only if you wish to tweak the settings in any way. All scripts needed for the compilation is in a speparate GitHub repository that may be found here: In order to compile the decoders there are a number of dependencies that need to be resolved:
+    This is only if you wish to tweak the settings in any way. All scripts needed for the compilation is in a speparate GitHub repository that may be found here: 
+    In order to compile the decoders there are a number of dependencies that need to be resolved:
     
     -   ADT (Ambisoncs Decoder Toolkit)
     -   Faust
@@ -116,7 +178,7 @@ All decoders use ACN channel order (see [Component order](#orge1676cb)) and SN3D
         
         `$ cd ../decoders`
         
-        With the decoding matrices calculated the binary decoders for all orders can be compiled by
+        With the decoding matrices calculated the binary decoders for all orders can be compiled by 
         
         `$ make -k target=all all`
         
@@ -125,7 +187,7 @@ All decoders use ACN channel order (see [Component order](#orge1676cb)) and SN3D
         `$ make -k target=install all`
 
 
-<a id="org6c10218"></a>
+<a id="orgde89384"></a>
 
 # Studio 114
 
@@ -142,24 +204,125 @@ Generally in ambisonics a speaker array is organized in circles. Due to the ambi
 
 In principle the output of the decoders should be mapped to the speakers according to the following table:
 
-| Decoder output | KMH114   | KMH114\_C |
-|-------------- |-------- |--------- |
-| 1              | 1 (L)    | 1 (L)     |
-| 2              | 2 (R)    | 2 (R)     |
-| 3              | 5 (LSR)  | 3 (C)     |
-| 4              | 6 (RSR)  | 5 (LSR)   |
-| 5              | 7 (LSF)  | 6 (RSR)   |
-| 6              | 8 (RSF)  | 7 (LSF)   |
-| 7              | 9 (RL)   | 8 (RSF)   |
-| 8              | 10 (RR)  | 9 (RL)    |
-| 9              | 11 (ULF) | 10 (RR)   |
-| 10             | 12 (URF) | 11 (ULF)  |
-| 11             | 13 (URL) | 12 (URF)  |
-| 12             | 14 (URR) | 13 (URL)  |
-| 13             | 15 (VOG) | 14 (URR)  |
-| 14             | -        | 15 (VOG)  |
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
-L, R, LSR, RSR, LSF, RSF, RL, RR, ULF, URF, URL, URR, VOG
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Decoder output</th>
+<th scope="col" class="org-left">KMH114</th>
+<th scope="col" class="org-left">KMH114\_C</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">1 (L)</td>
+<td class="org-left">1 (L)</td>
+</tr>
+
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">2 (R)</td>
+<td class="org-left">2 (R)</td>
+</tr>
+
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">5 (LSR)</td>
+<td class="org-left">3 (C)</td>
+</tr>
+
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-left">6 (RSR)</td>
+<td class="org-left">5 (LSR)</td>
+</tr>
+
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-left">7 (LSF)</td>
+<td class="org-left">6 (RSR)</td>
+</tr>
+
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-left">8 (RSF)</td>
+<td class="org-left">7 (LSF)</td>
+</tr>
+
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-left">9 (RL)</td>
+<td class="org-left">8 (RSF)</td>
+</tr>
+
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-left">10 (RR)</td>
+<td class="org-left">9 (RL)</td>
+</tr>
+
+
+<tr>
+<td class="org-right">9</td>
+<td class="org-left">11 (ULF)</td>
+<td class="org-left">10 (RR)</td>
+</tr>
+
+
+<tr>
+<td class="org-right">10</td>
+<td class="org-left">12 (URF)</td>
+<td class="org-left">11 (ULF)</td>
+</tr>
+
+
+<tr>
+<td class="org-right">11</td>
+<td class="org-left">13 (URL)</td>
+<td class="org-left">12 (URF)</td>
+</tr>
+
+
+<tr>
+<td class="org-right">12</td>
+<td class="org-left">14 (URR)</td>
+<td class="org-left">13 (URL)</td>
+</tr>
+
+
+<tr>
+<td class="org-right">13</td>
+<td class="org-left">15 (VOG)</td>
+<td class="org-left">14 (URR)</td>
+</tr>
+
+
+<tr>
+<td class="org-right">14</td>
+<td class="org-left">-</td>
+<td class="org-left">15 (VOG)</td>
+</tr>
+</tbody>
+</table>
+
+L, R, LSR, RSR, LSF, RSF, RL, RR, ULF, URF, URL, URR, VOG 
 
 
 ### Utility program
@@ -167,39 +330,156 @@ L, R, LSR, RSR, LSF, RSF, RL, RR, ULF, URF, URL, URR, VOG
 For studios 108 and 114 there is a small utitlity program that wraps your channels around. For 114, this means that you can insert `KMH114_channel_map` after your decoder and your channels will come out in the right order for a linear routing on the SSL (1 -> 1, 2 -> 2, etc)
 
 
-<a id="org4c45a3c"></a>
+<a id="orgf10bb7c"></a>
 
 ### Speaker positions
 
 Speaker index is counted linearly clockwise from FL. Subs are skipped.
 
-| ndx | azimuth | elevation | distance |
-|--- |------- |--------- |-------- |
-| 1   | 24.6    | 0         | 3.26     |
-| 2   | 0       | 0         | 3.27     |
-| 3   | -26.34  | 0         | 3.3      |
-| 4   | -58.7   | 0         | 3.35     |
-| 5   | -106    | 0         | 3.27     |
-| 6   | -129.35 | 0         | 3.364    |
-| 7   | 129.35  | 0         | 3.376    |
-| 8   | 106     | 0         | 3.262    |
-| 9   | 58.7    | 0         | 3.296    |
-| 10  | 45      | 18        | 3.02     |
-| 11  | -45     | 18        | 3.02     |
-| 12  | -135    | 18        | 3.05     |
-| 13  | 135     | 18        | 3.02     |
-| 14  | 0       | 90        | 1.60     |
+<table id="org72e5ab7" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">ndx</th>
+<th scope="col" class="org-right">azimuth</th>
+<th scope="col" class="org-right">elevation</th>
+<th scope="col" class="org-right">distance</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">24.6</td>
+<td class="org-right">0</td>
+<td class="org-right">3.26</td>
+</tr>
+
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">3.27</td>
+</tr>
+
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">-26.34</td>
+<td class="org-right">0</td>
+<td class="org-right">3.3</td>
+</tr>
+
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">-58.7</td>
+<td class="org-right">0</td>
+<td class="org-right">3.35</td>
+</tr>
+
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-right">-106</td>
+<td class="org-right">0</td>
+<td class="org-right">3.27</td>
+</tr>
+
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-right">-129.35</td>
+<td class="org-right">0</td>
+<td class="org-right">3.364</td>
+</tr>
+
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-right">129.35</td>
+<td class="org-right">0</td>
+<td class="org-right">3.376</td>
+</tr>
+
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-right">106</td>
+<td class="org-right">0</td>
+<td class="org-right">3.262</td>
+</tr>
+
+
+<tr>
+<td class="org-right">9</td>
+<td class="org-right">58.7</td>
+<td class="org-right">0</td>
+<td class="org-right">3.296</td>
+</tr>
+
+
+<tr>
+<td class="org-right">10</td>
+<td class="org-right">45</td>
+<td class="org-right">18</td>
+<td class="org-right">3.02</td>
+</tr>
+
+
+<tr>
+<td class="org-right">11</td>
+<td class="org-right">-45</td>
+<td class="org-right">18</td>
+<td class="org-right">3.02</td>
+</tr>
+
+
+<tr>
+<td class="org-right">12</td>
+<td class="org-right">-135</td>
+<td class="org-right">18</td>
+<td class="org-right">3.05</td>
+</tr>
+
+
+<tr>
+<td class="org-right">13</td>
+<td class="org-right">135</td>
+<td class="org-right">18</td>
+<td class="org-right">3.02</td>
+</tr>
+
+
+<tr>
+<td class="org-right">14</td>
+<td class="org-right">0</td>
+<td class="org-right">90</td>
+<td class="org-right">1.60</td>
+</tr>
+</tbody>
+</table>
 
 
 ### Spat
 
 -   Center included
 
-    Generate a file `spat_aed.txt` with the current speaker arrangments in Studio 114 according to [Speaker positions](#org4c45a3c) for use with the Ircam spat package.
+    Generate a file `spat_aed.txt` with the current speaker arrangments in Studio 114 according to [Speaker positions](#orgf10bb7c) for use with the Ircam spat package. 
     
     In Max/MSP (Spat), make an object: `[spat.viewer @numspeakers 15 @showlistener 1 @viewpoint top @width 1200 @height 600]` and send it the following in a message:
     
-    ```shell
-    speakers aed
-    24.6 12.910417 4.61 0 12.910417 4.61 -26.34 12.910417 4.61 -58.7 12.910417 4.61 -106 12.910417 4.61 -129.35 12.910417 4.61 129.35 12.910417 4.61 106 12.910417 4.61 58.7 12.910417 4.61 45 12.910417 4.61 -45 12.910417 4.61 -135 12.910417 4.61 135 12.910417 4.61 0 12.910417 4.61
-    ```
+        speakers aed
+        24.6 12.910417 4.61 0 12.910417 4.61 -26.34 12.910417 4.61 -58.7 12.910417 4.61 -106 12.910417 4.61 -129.35 12.910417 4.61 129.35 12.910417 4.61 106 12.910417 4.61 58.7 12.910417 4.61 45 12.910417 4.61 -45 12.910417 4.61 -135 12.910417 4.61 135 12.910417 4.61 0 12.910417 4.61
+
