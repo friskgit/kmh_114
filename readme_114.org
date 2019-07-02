@@ -13,10 +13,10 @@
 #+EXPORT_FILE_NAME: /Users/henrik_frisk/Music/ambidecodertoolbox/examples/decoders/KMH114/README
 #+LATEX_HEADER: \usepackage[lf]{ebgaramond}
 
-* COMMENT Guide to the file
+* COMMENT Guide to the file                                        :noexport:
   The first headline includes the generic info from kmh-studios.org
 * General information
 Scroll down to [[*Studio 114][Studio 114]] for specifics.
 #+INCLUDE: "~/org/kmh-studios.org::#github:readme_template" :only-contents
 * Studio 114
-#+INCLUDE: "~/org/kmh-studios.org::#github:readme_ls" :only-contents
+#+INCLUDE: "~/org/kmh-studios.org::#github:readme_114" :only-contents
