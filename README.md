@@ -2,15 +2,22 @@
 
 # General information
 
-Scroll down to [Studio 114](#org3c78a3c) for specifics.
+Scroll down to [Studio 114](#orgb58df33) for specifics.
 
 
 ## Ambisonics in KMH studios and Lilla salen
 
 
+### About ambisonics
+
+The general idea behind using ambisonics for difusing sounds in a space is to, in the first stage, encode an audio signal to a representation of a sound field - a B-format signal. This B-format signal is idependent of whatever speaker array the signal will later be diffused on. In the second stage the B-format signal is decoded to the layout of a particular speaker array. In between these two stages a number of transformations may be applied, but the sound source specification may conveniently be specified in the encoder.
+
+In principle, any kind of encoder may be combined with any kind of decoder provided that the same channel order is used. Among the encoders (VST) that work with the decoders presented here are [Ambix](http://www.matthiaskronlachner.com/?p=2015) and [IEM Plugin suite](https://plugins.iem.at/). Using these makes it simple to automate panning in a DAW such as [Reaper](https://www.reaper.fm/).
+
+
 ### About the compiled decoders
 
-All decoders use ACN channel order (see [Component order](#org3ce0609)) and SN3D normalization (see [Normalisation](#org242d2c6)) and are dual-band, max-rE/rV.
+All decoders use ACN channel order (see [Component order](#org10466c3)) and SN3D normalization (see [Normalisation](#org99f594b)) and are dual-band, max-rE/rV.
 
 -   A guide to the file names
 
@@ -187,7 +194,7 @@ All decoders use ACN channel order (see [Component order](#org3ce0609)) and SN3D
         `$ make -k target=install all`
 
 
-<a id="org3c78a3c"></a>
+<a id="orgb58df33"></a>
 
 # Studio 114
 
@@ -330,13 +337,13 @@ L, R, LSR, RSR, LSF, RSF, RL, RR, ULF, URF, URL, URR, VOG
 For studios 108 and 114 there is a small utitlity program that wraps your channels around. For 114, this means that you can insert `KMH114_channel_map` after your decoder and your channels will come out in the right order for a linear routing on the SSL (1 -> 1, 2 -> 2, etc)
 
 
-<a id="org5d92ba4"></a>
+<a id="org656d53f"></a>
 
 ### Speaker positions
 
 Speaker index is counted linearly clockwise from FL. Subs are skipped.
 
-<table id="org2a537af" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org9fa14db" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -476,23 +483,10 @@ Speaker index is counted linearly clockwise from FL. Subs are skipped.
 
 -   Center included
 
-    A setup file for the current speaker arrangments in Studio 114 according to [Speaker positions](#org5d92ba4) for use with the Ircam spat package. 
+    A setup file for the current speaker arrangments in Studio 114 according to [Speaker positions](#org656d53f) for use with the Ircam spat package. 
     
     In Max/MSP (Spat), make an object: `[spat.viewer @numspeakers 15 @showlistener 1 @viewpoint top @width 1200 @height 600]` and send it the following in a message:
     
         speakers aed
         24.6 12.910417 4.61 0 12.910417 4.61 -26.34 12.910417 4.61 -58.7 12.910417 4.61 -106 12.910417 4.61 -129.35 12.910417 4.61 129.35 12.910417 4.61 106 12.910417 4.61 58.7 12.910417 4.61 45 12.910417 4.61 -45 12.910417 4.61 -135 12.910417 4.61 135 12.910417 4.61 0 12.910417 4.61
-
-
-### IEMAllRad
-
--   Center included
-
-    A setup file for the IEM AllRad decoder may be found in the IEM directory of the repository: 
-    
-    [iem\_allrad\_setup\_114.json](file:///Users/henrik_frisk/Music/ambidecodertoolbox/examples/decoders/KMH114/~KMH114/IEM/iem_allrad_setup_114.json)
-    
-    The center speaker can easily be removed from the array. Remember to re-calculate the decoding matrix if you load a new setting or change the setup (see the screenshot).
-    
-    ![img](images/decoders/iem_screenshot.jpg "Click the IMPORT button to load the array, and the CALCULATE button to recalculate the decoder.")
 

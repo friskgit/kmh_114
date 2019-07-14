@@ -1,0 +1,19 @@
+/speaker/number 14
+/speaker/correction/delay off
+/speaker/correction/gain off
+/speakers/aed 24.6 0 3.26 0 0 3.27 -26.34 0 3.3 -58.7 0 3.35 -106 0 3.27 -129.35 0 3.364 129.35 0 3.376 106 0 3.262 58.7 0 3.296 45 18 3.02 -45 18 3.02 -135 18 3.05 135 18 3.02 0 90 1.6
+/speaker/1/delay 0
+/speaker/2/delay 0
+/speaker/3/delay 0
+/speaker/4/delay 0
+/speaker/5/delay 0
+/speaker/6/delay 0
+/speaker/7/delay 0
+/speaker/8/delay 0
+/speaker/9/delay 0
+/speaker/10/delay 0
+/speaker/11/delay 0
+/speaker/12/delay 0
+/speaker/13/delay 0
+/speaker/14/delay 0
+

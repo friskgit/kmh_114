@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-07-09 Tue 13:00 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About ambisonics in studio 1D114 at KMH</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Henrik Frisk" />
+<meta name="description" content="This is the basis for the README.md that should bo with the GitHub repository kmh_114."
+ />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">About ambisonics in studio 1D114 at KMH</h1>
+
+<div id="outline-container-org40df433" class="outline-2">
+<h2 id="org40df433">General information</h2>
+<div class="outline-text-2" id="text-org40df433">
+<p>
+Scroll down to <a href="#orgc32c994">Studio 114</a> for specifics.
+</p>
+</div>
+<div id="outline-container-org011ae7e" class="outline-3">
+<h3 id="github:readme_template"><a id="org011ae7e"></a>Ambisonics in KMH studios and Lilla salen</h3>
+<div class="outline-text-3" id="text-github:readme_template">
+</div>
+<div id="outline-container-org7912c55" class="outline-4">
+<h4 id="org7912c55">About the compiled decoders</h4>
+<div class="outline-text-4" id="text-org7912c55">
+<p>
+All decoders use ACN channel order (see <a href="#org2ed4eca">Component order</a>) and SN3D normalization (see <a href="#org681b9b7">Normalisation</a>) and are dual-band, max-rE/rV.
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="org8abe17c"></a>A guide to the file names<br />
+<div class="outline-text-5" id="text-org8abe17c">
+<p>
+For efficiency file names are composed of the following parts
+</p>
+
+<ol class="org-ol">
+<li>The space (for Lilla Salen this is KMHLS_AE)</li>
+<li>Speaker configuration (Full or Normal where the former in 108/118 and 114 means the center speaker is included, and in Lilla Salen it refers to the 45.4 setup)</li>
+<li>Order (e.g. 7H7P)</li>
+<li>Redundant speaker configuration (full, but only in certain cases for Lilla Salen)</li>
+<li>Finally, a number depicting the type of decoder according to the following codes:</li>
+</ol>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgb3243fc"></a>(1) AllRad mixed order (4/3)<br />
+<div class="outline-text-6" id="text-orgb3243fc">
+<p>
+Mixed order ambisonics decoder.
+</p>
+</div>
+</li>
+<li><a id="org8e0b377"></a>(2) Decoding with the pseudo-inverse, even-energy<br />
+<div class="outline-text-6" id="text-org8e0b377">
+<p>
+Pinv decoders in 1st, 3rd order with even-energy for inversion variants.
+</p>
+
+<p>
+The higher order decoders in pseudo-inverse do not work well, so do not try those above 3rd order.
+</p>
+</div>
+</li>
+<li><a id="org84b1bcd"></a>(3) Decoding with the pseudo-inverse, mode-matching<br />
+<div class="outline-text-6" id="text-org84b1bcd">
+<p>
+Pinv decoders in 1st, 3rd order, mode-matching for inversion variants. This has been removed from the repository.
+</p>
+</div>
+</li>
+<li><a id="orgeaf05f4"></a>(4) Same as (2) but with a blend coefficient for inversion variants (energy limited/mode matching 50%)<br />
+<div class="outline-text-6" id="text-orgeaf05f4">
+<p>
+1st and 3rd and 6th order.
+</p>
+
+<p>
+The higher order decoders in pseudo-inverse do not work well, so do not try those above 3rd order - though sixth order has provecd useful.
+</p>
+</div>
+</li>
+<li><a id="org4242c62"></a>(5) Spherical slepian decoders<br />
+<div class="outline-text-6" id="text-org4242c62">
+<p>
+SSF decoders in 1st, 3rd and 6th order (6th order is here only as VST, but I can compile the other formats if needed.)
+</p>
+</div>
+</li>
+<li><a id="org4b0d3e2"></a>(6) All-round decoders<br />
+<div class="outline-text-6" id="text-org4b0d3e2">
+<p>
+AllRAD decoders in 1st, 3rd, 5th and 7th order.
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgcda3b95"></a>Ouput formats<br />
+<div class="outline-text-5" id="text-orgcda3b95">
+<p>
+In the directory of each decoder there are four subdirectories:
+</p>
+<ul class="org-ul">
+<li>ambix: contains the decoder matrix for the ambix VST-plugin for certain settings.</li>
+<li>bin: contains all other decoders</li>
+<li>doc: documentation, a bare minimal (but a more comprehensive documentation can be built from the source, check the individual Makefiles for each compilere)</li>
+<li>src: the faust sources for the decoders</li>
+</ul>
+
+<p>
+The binaries are prepared in six different formats:
+</p>
+<ol class="org-ol">
+<li>a jack application (start from commandline: $ KMHLS_Dome_4h3v_normal_1)</li>
+<li>a double clickable CoreAudio application</li>
+<li>a 'max' directory with Max/MSP objects (as package with help files to be put in ~/Documents/Max 7/Packages)</li>
+<li>a 'pd' direcory (bang left most input to get parameter names)</li>
+<li>a 'sc' directory with SuperCollider classes (put all .sc and .scx in ~/Library/Application Support/SuperCollider/Extensions , the supernova files are of course optional)</li>
+<li>an 'ambix' directory with Ambix config file</li>
+</ol>
+</div>
+
+<ul class="org-ul">
+<li><a id="org7654d79"></a>Install on your system<br />
+<div class="outline-text-6" id="text-org7654d79">
+<p>
+You may simply move the decoders you want to use to the right locations on your system. They are compiled and ready to be used in the repository. As a convenience one may run the corresponding install scripts in the Makefile for the decoders to install them in your default directory:
+</p>
+
+<ol class="org-ol">
+<li>Open a terminal (such as Terminal.app)</li>
+<li>At the prompt type <code>$ cd</code> and drag one of the directories, say 'KMHLS_AE_normal_6' of your downloaded repository onto the terminal and press enter.</li>
+<li>Enter <code>$ make maxinstall</code> at the prompt and press enter.</li>
+</ol>
+
+<p>
+The last step can be made for <code>scinstall</code>, <code>vstinstall</code> and <code>pdinstall</code>
+</p>
+
+<p>
+Note that to create a Max/MSP compatible package you may have to run maxinstall and have the reslevant dependencies resolved. Else, contact me!
+</p>
+</div>
+</li>
+</ul>
+</li>
+<li><a id="org2ed4eca"></a>Component order<br />
+<div class="outline-text-5" id="text-org2ed4eca">
+<p>
+The component order for the input to the decoder follows the ACN (Ambisonics Channel Number) standard according to the table below (for third order):
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">0</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+<td class="org-right">6</td>
+<td class="org-right">7</td>
+<td class="org-right">8</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">9</td>
+<td class="org-right">10</td>
+<td class="org-right">11</td>
+<td class="org-right">12</td>
+<td class="org-right">13</td>
+<td class="org-right">13</td>
+<td class="org-left">15</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Or: W Y Z X V T R S U Q O M K L N P 
+</p>
+</div>
+</li>
+
+<li><a id="org681b9b7"></a>Normalisation<br />
+<div class="outline-text-5" id="text-org681b9b7">
+<p>
+The decoder is using SN3D normalisation. With SN3D normalisation no component will exceed the peak value of the 0th order component.
+</p>
+</div>
+</li>
+
+<li><a id="org7464a71"></a>Compiling the decoders<br />
+<div class="outline-text-5" id="text-org7464a71">
+<p>
+This is only if you wish to tweak the settings in any way. All scripts needed for the compilation is in a speparate GitHub repository that may be found here: 
+In order to compile the decoders there are a number of dependencies that need to be resolved:
+</p>
+
+<ul class="org-ul">
+<li>ADT (Ambisoncs Decoder Toolkit)</li>
+<li>Faust</li>
+<li>VST SDK</li>
+<li>Pure Data</li>
+<li>Max MSP SDK</li>
+<li>Links to Supercollider classes</li>
+</ul>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgbda9bdc"></a>Running Makefile scripts for ADT<br />
+<div class="outline-text-6" id="text-orgbda9bdc">
+<p>
+Run the following for each function that needs to be compiled for lilla salen (108_all and 114_all for the studios):
+</p>
+
+<p>
+<code>$ make ls_all function=6</code>
+</p>
+
+<p>
+Note that for fuction 2 &amp; 4 only orders up to 3 are usable.
+</p>
+
+<p>
+The decoding matrices end up in a directory above your current directory named 'decoders'. Move into that directory with the following command:
+</p>
+
+<p>
+<code>$ cd ../decoders</code>
+</p>
+
+<p>
+With the decoding matrices calculated the binary decoders for all orders can be compiled by 
+</p>
+
+<p>
+<code>$ make -k target=all all</code>
+</p>
+
+<p>
+The target can be either of [all,sc,max,pd,vst]. Following this step the binaries can be installed (to install only one target, use that as the argument for 'target'.:
+</p>
+
+<p>
+<code>$ make -k target=install all</code>
+</p>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc32c994" class="outline-2">
+<h2 id="orgc32c994">Studio 114</h2>
+<div class="outline-text-2" id="text-orgc32c994">
+</div>
+<div id="outline-container-org7c71528" class="outline-3">
+<h3 id="github:readme_114"><a id="org7c71528"></a>Specific info for 114</h3>
+<div class="outline-text-3" id="text-github:readme_114">
+</div>
+<div id="outline-container-org589fb61" class="outline-4">
+<h4 id="org589fb61">Output</h4>
+<div class="outline-text-4" id="text-org589fb61">
+<p>
+Generally in ambisonics a speaker array is organized in circles. Due to the ambition to accomodate many different surround sound techniques this is not the case in Studio 114. For this reason some care needs to be taken to make sure that the right ambisonic channel is coming out of the correct speaker. There are two general version of the decoder for KMH114. KMH114_C is equal to KMH114 except that the first also includes the center speaker which may, or may not, be preferable.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga6a38c6" class="outline-4">
+<h4 id="orga6a38c6">Channel output mapping</h4>
+<div class="outline-text-4" id="text-orga6a38c6">
+<p>
+In principle the output of the decoders should be mapped to the speakers according to the following table:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Decoder output</th>
+<th scope="col" class="org-left">KMH114</th>
+<th scope="col" class="org-left">KMH114_C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">1 (L)</td>
+<td class="org-left">1 (L)</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">2 (R)</td>
+<td class="org-left">2 (R)</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">5 (LSR)</td>
+<td class="org-left">3 (C)</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-left">6 (RSR)</td>
+<td class="org-left">5 (LSR)</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-left">7 (LSF)</td>
+<td class="org-left">6 (RSR)</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-left">8 (RSF)</td>
+<td class="org-left">7 (LSF)</td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-left">9 (RL)</td>
+<td class="org-left">8 (RSF)</td>
+</tr>
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-left">10 (RR)</td>
+<td class="org-left">9 (RL)</td>
+</tr>
+
+<tr>
+<td class="org-right">9</td>
+<td class="org-left">11 (ULF)</td>
+<td class="org-left">10 (RR)</td>
+</tr>
+
+<tr>
+<td class="org-right">10</td>
+<td class="org-left">12 (URF)</td>
+<td class="org-left">11 (ULF)</td>
+</tr>
+
+<tr>
+<td class="org-right">11</td>
+<td class="org-left">13 (URL)</td>
+<td class="org-left">12 (URF)</td>
+</tr>
+
+<tr>
+<td class="org-right">12</td>
+<td class="org-left">14 (URR)</td>
+<td class="org-left">13 (URL)</td>
+</tr>
+
+<tr>
+<td class="org-right">13</td>
+<td class="org-left">15 (VOG)</td>
+<td class="org-left">14 (URR)</td>
+</tr>
+
+<tr>
+<td class="org-right">14</td>
+<td class="org-left">-</td>
+<td class="org-left">15 (VOG)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+L, R, LSR, RSR, LSF, RSF, RL, RR, ULF, URF, URL, URR, VOG 
+</p>
+</div>
+</div>
+<div id="outline-container-orgb5009f6" class="outline-4">
+<h4 id="orgb5009f6">Utility program</h4>
+<div class="outline-text-4" id="text-orgb5009f6">
+<p>
+For studios 108 and 114 there is a small utitlity program that wraps your channels around. For 114, this means that you can insert <code>KMH114_channel_map</code> after your decoder and your channels will come out in the right order for a linear routing on the SSL (1 -&gt; 1, 2 -&gt; 2, etc)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org276fd81" class="outline-4">
+<h4 id="org276fd81">Speaker positions</h4>
+<div class="outline-text-4" id="text-org276fd81">
+<p>
+Speaker index is counted linearly clockwise from FL. Subs are skipped.
+</p>
+
+<table id="org0d69966" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">ndx</th>
+<th scope="col" class="org-right">azimuth</th>
+<th scope="col" class="org-right">elevation</th>
+<th scope="col" class="org-right">distance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">24.6</td>
+<td class="org-right">0</td>
+<td class="org-right">3.26</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">3.27</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">-26.34</td>
+<td class="org-right">0</td>
+<td class="org-right">3.3</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">-58.7</td>
+<td class="org-right">0</td>
+<td class="org-right">3.35</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-right">-106</td>
+<td class="org-right">0</td>
+<td class="org-right">3.27</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-right">-129.35</td>
+<td class="org-right">0</td>
+<td class="org-right">3.364</td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-right">129.35</td>
+<td class="org-right">0</td>
+<td class="org-right">3.376</td>
+</tr>
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-right">106</td>
+<td class="org-right">0</td>
+<td class="org-right">3.262</td>
+</tr>
+
+<tr>
+<td class="org-right">9</td>
+<td class="org-right">58.7</td>
+<td class="org-right">0</td>
+<td class="org-right">3.296</td>
+</tr>
+
+<tr>
+<td class="org-right">10</td>
+<td class="org-right">45</td>
+<td class="org-right">18</td>
+<td class="org-right">3.02</td>
+</tr>
+
+<tr>
+<td class="org-right">11</td>
+<td class="org-right">-45</td>
+<td class="org-right">18</td>
+<td class="org-right">3.02</td>
+</tr>
+
+<tr>
+<td class="org-right">12</td>
+<td class="org-right">-135</td>
+<td class="org-right">18</td>
+<td class="org-right">3.05</td>
+</tr>
+
+<tr>
+<td class="org-right">13</td>
+<td class="org-right">135</td>
+<td class="org-right">18</td>
+<td class="org-right">3.02</td>
+</tr>
+
+<tr>
+<td class="org-right">14</td>
+<td class="org-right">0</td>
+<td class="org-right">90</td>
+<td class="org-right">1.60</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgb8e7b30" class="outline-4">
+<h4 id="orgb8e7b30">Spat</h4>
+<div class="outline-text-4" id="text-orgb8e7b30">
+</div>
+<ul class="org-ul">
+<li><a id="org0bcc21a"></a>Center included<br />
+<div class="outline-text-5" id="text-org0bcc21a">
+<p>
+A setup file for the current speaker arrangments in Studio 114 according to <a href="#org276fd81">Speaker positions</a> for use with the Ircam spat package. 
+</p>
+
+<p>
+In Max/MSP (Spat), make an object: <code>[spat.viewer @numspeakers 15 @showlistener 1 @viewpoint top @width 1200 @height 600]</code> and send it the following in a message:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">speakers aed
+24.6 12.910417 4.61 0 12.910417 4.61 -26.34 12.910417 4.61 -58.7 12.910417 4.61 -106 12.910417 4.61 -129.35 12.910417 4.61 129.35 12.910417 4.61 106 12.910417 4.61 58.7 12.910417 4.61 45 12.910417 4.61 -45 12.910417 4.61 -135 12.910417 4.61 135 12.910417 4.61 0 12.910417 4.61
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org98cee7d" class="outline-4">
+<h4 id="org98cee7d">IEMAllRad</h4>
+<div class="outline-text-4" id="text-org98cee7d">
+</div>
+<ul class="org-ul">
+<li><a id="org5a1c6b9"></a>Center included<br />
+<div class="outline-text-5" id="text-org5a1c6b9">
+<p>
+A setup file for the IEM AllRad decoder may be found in the IEM directory of the repository: 
+</p>
+
+<p>
+<a href="file:///Users/henrik_frisk/Music/ambidecodertoolbox/examples/decoders/KMH114/~KMH114/IEM/iem_allrad_setup_114.json">iem_allrad_setup_114.json</a>
+</p>
+
+<p>
+The center speaker can easily be removed from the array. Remember to re-calculate the decoding matrix if you load a new setting or change the setup (see the screenshot).
+</p>
+
+
+<div class="figure">
+<p><img src="images/decoders/iem_screenshot.jpg" alt="iem_screenshot.jpg" width="400" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Click the IMPORT button to load the array, and the CALCULATE button to recalculate the decoder.</p>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2019-06-29 Sat 00:00</p>
+<p class="author">Author: Henrik Frisk</p>
+<p class="date">Created: 2019-07-09 Tue 13:00</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
