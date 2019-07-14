@@ -2,7 +2,7 @@
 
 # General information
 
-Scroll down to [Studio 114](#orgb58df33) for specifics.
+Scroll down to [Studio 114](#org5c41e09) for specifics.
 
 
 ## Ambisonics in KMH studios and Lilla salen
@@ -17,7 +17,7 @@ In principle, any kind of encoder may be combined with any kind of decoder provi
 
 ### About the compiled decoders
 
-All decoders use ACN channel order (see [Component order](#org10466c3)) and SN3D normalization (see [Normalisation](#org99f594b)) and are dual-band, max-rE/rV.
+All decoders use ACN channel order (see [Component order](#org1bfca07)) and SN3D normalization (see [Normalisation](#orgc2eb052)) and are dual-band, max-rE/rV.
 
 -   A guide to the file names
 
@@ -194,7 +194,7 @@ All decoders use ACN channel order (see [Component order](#org10466c3)) and SN3D
         `$ make -k target=install all`
 
 
-<a id="orgb58df33"></a>
+<a id="org5c41e09"></a>
 
 # Studio 114
 
@@ -337,13 +337,13 @@ L, R, LSR, RSR, LSF, RSF, RL, RR, ULF, URF, URL, URR, VOG
 For studios 108 and 114 there is a small utitlity program that wraps your channels around. For 114, this means that you can insert `KMH114_channel_map` after your decoder and your channels will come out in the right order for a linear routing on the SSL (1 -> 1, 2 -> 2, etc)
 
 
-<a id="org656d53f"></a>
+<a id="org5087d8c"></a>
 
 ### Speaker positions
 
 Speaker index is counted linearly clockwise from FL. Subs are skipped.
 
-<table id="org9fa14db" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgeb7bcc1" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -483,10 +483,21 @@ Speaker index is counted linearly clockwise from FL. Subs are skipped.
 
 -   Center included
 
-    A setup file for the current speaker arrangments in Studio 114 according to [Speaker positions](#org656d53f) for use with the Ircam spat package. 
+    A setup file for the current speaker arrangments in Studio 114 according to [Speaker positions](#org5087d8c) for use with the Ircam spat package. 
     
     In Max/MSP (Spat), make an object: `[spat.viewer @numspeakers 15 @showlistener 1 @viewpoint top @width 1200 @height 600]` and send it the following in a message:
     
         speakers aed
         24.6 12.910417 4.61 0 12.910417 4.61 -26.34 12.910417 4.61 -58.7 12.910417 4.61 -106 12.910417 4.61 -129.35 12.910417 4.61 129.35 12.910417 4.61 106 12.910417 4.61 58.7 12.910417 4.61 45 12.910417 4.61 -45 12.910417 4.61 -135 12.910417 4.61 135 12.910417 4.61 0 12.910417 4.61
+
+
+### Panoramix
+
+The current speaker arrangments in Studio 114 according to the table in [Speaker positions](#org5087d8c) may be used with the Ircam Panoramix package. The two files below may be imported in a Panoramix HOA bus:
+
+<Panoramix/panoramix_setup_13.txt  ><Panoramix/panoramix_setup_13.txt>
+
+![img](./images/panoramix-hoabus.png "A HOA bus in Panoramix")
+
+The following file may be loaded in a HOA bus track (See [fig:hoabus](#fig:hoabus)) in panormaix by selecting the text below, clicking the `spekers...` button and click `paste` in the upper left corner of the newly opened window. 
 
