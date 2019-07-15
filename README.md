@@ -505,7 +505,7 @@ Speaker index is counted linearly clockwise from FL. Subs are skipped.
 
 The current speaker arrangments in Studio 114 according to the table in [Speaker positions](#org3cb4d12) may be used with the Ircam Panoramix package. The two files below may be imported in a Panoramix HOA bus:
 
-![img](./images/panoramix-hoabus.png "A HOA bus in Panoramix")
+![img](./images/decoders/panoramix-hoabus.png "A HOA bus in Panoramix")
 
 The following file may be loaded in a HOA bus track (See [fig:hoabus](#fig:hoabus)) in panormaix by selecting the text below, clicking the `spekers...` button and click `paste` in the upper left corner of the newly opened window. 
 
