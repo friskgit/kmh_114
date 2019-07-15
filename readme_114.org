@@ -20,3 +20,11 @@ Scroll down to [[*Studio 114][Studio 114]] for specifics.
 #+INCLUDE: "~/org/kmh-studios.org::#github:readme_template" :only-contents
 * Studio 114
 #+INCLUDE: "~/org/kmh-studios.org::#github:readme_114" :only-contents
+
+#+call: update_path()
+#+name: update_path
+#+begin_src shell :exports none
+  sed -i '' 's/\(panoramix-hoabus.png\)/decoders\/\1/' README.md
+#+end_src
+
+#+RESULTS: update_path
